@@ -1,50 +1,50 @@
 module Geometry
-  class Vector < Struct.new(:x, :y)
-    def ==(vector)
-      x === vector.x && y === vector.y
-    end        
-    
-    # Modulus of vector. Also known as length, size or norm
-    def modulus      
+  class GVector < Struct.new(:x, :y)
+    def ==(gvector)
+      x === gvector.x && y === gvector.y
+    end
+
+    # Modulus of gvector. Also known as length, size or norm
+    def modulus
       Math.hypot(x ,y)
     end
 
-    # z-coordinate of cross product (also known as vector product or outer product)
-    # It is positive if other vector should be turned counter-clockwise in order to superpose them.
-    # It is negetive if other vector should be turned clockwise in order to superpose them.
-    # It is zero when vectors are collinear.
-    # Remark: x- and y- coordinates of plane vectors cross product are always zero
-    def cross_product(vector)
-      x * vector.y - y * vector.x
+    # z-coordinate of cross product (also known as gvector product or outer product)
+    # It is positive if other gvector should be turned counter-clockwise in order to superpose them.
+    # It is negetive if other gvector should be turned clockwise in order to superpose them.
+    # It is zero when gvectors are collinear.
+    # Remark: x- and y- coordinates of plane gvectors cross product are always zero
+    def cross_product(gvector)
+      x * gvector.y - y * gvector.x
     end
 
     # Scalar product, also known as inner product or dot product
-    def scalar_product(vector)
-      x * vector.x + y * vector.y
-    end
-    
-    def collinear_with?(vector)
-      cross_product(vector) === 0
+    def scalar_product(gvector)
+      x * gvector.x + y * gvector.y
     end
 
-    def +(vector)
-      Vector.new(x + vector.x, y + vector.y)
+    def collinear_with?(gvector)
+      cross_product(gvector) === 0
     end
 
-    def -(vector)
-      self + (-1) * vector
+    def +(gvector)
+      GVector.new(x + gvector.x, y + gvector.y)
     end
 
-    def *(scalar)      
-      Vector.new(x * scalar, y * scalar)
+    def -(gvector)
+      self + (-1) * gvector
     end
 
-    def coerce(scalar)      
+    def *(scalar)
+      GVector.new(x * scalar, y * scalar)
+    end
+
+    def coerce(scalar)
       if scalar.is_a?(Numeric)
         [self, scalar]
       else
-        raise ArgumentError, "Vector: cannot coerce #{scalar.inspect}"
-      end             
+        raise ArgumentError, "GVector: cannot coerce #{scalar.inspect}"
+      end
     end
   end
 end
