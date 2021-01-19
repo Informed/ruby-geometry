@@ -8,12 +8,12 @@ module Geometry
       x === another_point.x && y === another_point.y
     end
 
-    def to_vector
-      Vector.new(x, y)
+    def to_gvector
+      GVector.new(x, y)
     end
 
-    def advance_by(vector)
-      Point x + vector.x, y + vector.y
+    def advance_by(gvector)
+      Point x + gvector.x, y + gvector.y
     end
 
     def distance_to(point)

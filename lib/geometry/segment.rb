@@ -30,7 +30,7 @@ module Geometry
     end
 
     def parallel_to?(segment)
-      to_vector.collinear_with?(segment.to_vector)
+      to_gvector.collinear_with?(segment.to_gvector)
     end
 
     def lies_on_one_line_with?(segment)
@@ -73,9 +73,9 @@ module Geometry
     end
 
     def distance_to(point)
-      q = point.to_vector
-      p1 = point1.to_vector
-      p2 = point2.to_vector
+      q = point.to_gvector
+      p1 = point1.to_gvector
+      p2 = point2.to_gvector
 
       return Geometry.distance(q, p1) if p1 == p2
 
@@ -101,8 +101,8 @@ module Geometry
       Geometry.distance(point1, point2)
     end
 
-    def to_vector
-      Vector.new(point2.x - point1.x, point2.y - point1.y)
+    def to_gvector
+      GVector.new(point2.x - point1.x, point2.y - point1.y)
     end
 
   protected
@@ -124,13 +124,13 @@ module Geometry
     end
 
     def lies_on_line_intersecting?(segment)
-      vector_to_first_endpoint = Segment.new(self.point1, segment.point1).to_vector
-      vector_to_second_endpoint = Segment.new(self.point1, segment.point2).to_vector
+      gvector_to_first_endpoint = Segment.new(self.point1, segment.point1).to_gvector
+      gvector_to_second_endpoint = Segment.new(self.point1, segment.point2).to_gvector
 
       #FIXME: '>=' and '<=' method of Fixnum and Float should be overriden too (take precision into account)
       # there is a rare case, when this method is wrong due to precision
-      self.to_vector.cross_product(vector_to_first_endpoint) *
-        self.to_vector.cross_product(vector_to_second_endpoint) <= 0
+      self.to_gvector.cross_product(gvector_to_first_endpoint) *
+        self.to_gvector.cross_product(gvector_to_second_endpoint) <= 0
     end
   end
 end

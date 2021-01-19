@@ -18,7 +18,7 @@ Defined geometry objects
 
   * Segment
 
-  * Vector
+  * GVector
 
   * Polygon
 
@@ -44,17 +44,17 @@ Already implemented algorithms
 
   * Are segments parallel? `Segment#parallel_to?`
 
-  * Are vectors collinear? `Vector#collinear_with?`
+  * Are gvectors collinear? `GVector#collinear_with?`
 
-  * Vectors cross product (outer product, vector product) `Vector#cross_product`
+  * GVectors cross product (outer product, gvector product) `GVector#cross_product`
 
-  * Vectors scalar product (inner product, dot product) `Vector#scalar_product`
+  * GVectors scalar product (inner product, dot product) `GVector#scalar_product`
 
   * Segment length `Segment#length`
 
-  * Vector modulus `Vector#modulus`
+  * GVector modulus `GVector#modulus`
 
-  * Trivial vector arithmetics: summation, subtraction, vector-number multiplication `Vector#+(vector); Vector#-(vector); Vector#*(numeric)`
+  * Trivial gvector arithmetics: summation, subtraction, gvector-number multiplication `GVector#+(gvector); GVector#-(gvector); GVector#*(numeric)`
 
   * Euclid distance `Geometry#distance`
 

@@ -3,7 +3,7 @@ require "memoist"
 
 require 'geometry/point'
 require 'geometry/segment'
-require 'geometry/vector'
+require 'geometry/gvector'
 require 'geometry/polygon'
 require 'geometry/line'
 require 'geometry/bounding_box'
